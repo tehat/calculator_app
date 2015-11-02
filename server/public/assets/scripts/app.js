@@ -3,14 +3,20 @@
  */
 $(document).ready(function(){
 
-    $("#getData").on('click', clickGetData);
-    $("#postData").on('click', clickPostData);
-
     //$("#add").on('click', selectFunction);
     //$("#subtract").on('click', selectFunction);
     //$("#multiply").on('click', selectFunction);
     //$("#divide").on('click', selectFunction);
 
+    //Neither of these jquery attempts worked.
+
+    //$("#add").on('click', function(){mathProblem["type"] = "Add"});
+    //$("#subtract").on('click', function(){mathProblem["type"] = "Subtract"});
+    //$("#multiply").on('click', function(){mathProblem["type"] = "Multiply"});
+    //$("#divide").on('click', function(){mathProblem["type"] = "Divide"});
+
+    $("#getData").on('click', clickGetData);
+    $("#postData").on('click', clickPostData);
 
 });
 
@@ -32,8 +38,44 @@ function clickPostData() {
     //var output = 0;
     $.each($("#inputForm").serializeArray(), function (i, field) {
         mathProblem[field.name] = field.value;
-        mathProblem["type"] = "Add";
+        //$("#functionButtons").on('click', function(){
+        //
+        //
+        //})
+
+        mathProblem["type"] = "Add";// !!!!!this works and I can create and object that has all the values that I need
+        //I do not know how to connect the buttons to each individual function.
+
+        //$("#add").on('click', function(){mathProblem["type"] = "Add"});
+        //$("#subtract").on('click', function(){mathProblem["type"] = "Subtract"});
+        //$("#multiply").on('click', function(){mathProblem["type"] = "Multiply"});
+        //$("#divide").on('click', function(){mathProblem["type"] = "Divide"});
+
+
+
     });
+
+    //function selectFunction(type) {
+    //    switch (type) {
+    //        case mathFunctions[0]:
+    //            type = "Add";
+    //            break;
+    //        case mathFunctions[1]:
+    //            type = "Subtract";
+    //            break;
+    //        case mathFunctions[2]:
+    //            mathProblem["type"] = "Multiply";
+    //            break;
+    //        case mathFunctions[3]:
+    //            mathProblem["type"] = "Divide";
+    //            break;
+    //        default:
+    //            text: "?";
+    //    }
+    //    return type;
+    //}
+
+
 
 
     $.ajax({
@@ -45,9 +87,10 @@ function clickPostData() {
         },
         success: function (data) {
             console.log(data);
-            //$("#output").append(output);
+
         }
     });
+}
 
     //function selectFunction() {
     //    for (var i = 0; i < mathFunctions.length; i++) {
@@ -59,22 +102,4 @@ function clickPostData() {
     //        console.log("here it is", mathProblem);
     //    }
     //}
-}
 
-//    switch ("type") {
-//        case "#add":
-//            "Add";
-//            break;
-//case "#subtract":
-//    mathProblem["type"] = "Subtract";
-//    break;
-//case "multiply":
-//    mathProblem["type"] = "Multiply";
-//    break;
-//case "divide":
-//    mathProblem["type"] = "Divide";
-//    break;
-//        default:
-//            "Can not solve this problem";
-//    }
-//}

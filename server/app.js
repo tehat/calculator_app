@@ -29,8 +29,8 @@ app.post('/data', function(request, response){
         console.log(request.body.xInput, request.body.yInput,request.body.type);
         //console.log('were on server');
         //response.send("Hello");
-        mathCalculations(request.body.xInput, request.body.yInput,request.body.type);
-        response.send({output});
+        var output = mathCalculations(request.body.xInput, request.body.yInput,request.body.type);
+        response.send({value: output});
     });
 
 
@@ -40,6 +40,9 @@ app.listen(app.get("port"), function(){
 });
 
 function mathCalculations(xInput, yInput, type) {
+
+    xInput = parseInt(xInput);
+    yInput = parseInt(yInput);
 
     switch (type) {
         case "Add":
@@ -63,4 +66,5 @@ function mathCalculations(xInput, yInput, type) {
         default:
             text = "?"
     }
+    return output;
 }
